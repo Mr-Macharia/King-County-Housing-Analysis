@@ -1,35 +1,88 @@
-#### <ins> Regression analysis </ins>
 
-#### Having an introduction to regression analysis using the StatsModels library and Scikit-Learn, we decided to create a regression analysis project. This roject was really intuitive because our skills were to be put to test using this housing data.
+---
 
-#### As a good practise for any project, we had to come up up with a detailed but brief business objective to give a synopsis of what we were to do. We came up with three obectives which are:
-* Buid a regression model with a good accuracy score as well as an RMSE score closer to 0. This would finally become the metric for choosing the best model for which we were to use.
-* Extract insights from the data especially the main factors impacting the prices both positively and negatively.
-* Investigate the predictor features/independent features impact on the prices of houses.
+# **King County Housing Data Regression Analysis**
 
-#### The task at hand involved analysis of the King County Housing data and extracting meaningfull insights that may impact on the prices of houses. Thereafter we built a model using various models specifically linear models. This involves alot of feature engineering as well as clustering to generate new features that may have a direct correlation with house pricing. A Domain and basic knowledge  was of essence in this project so as to know what new features to generate may have an imapct on the house prices. A brief knowledge about Real Estate came in handy throughout this project. 
+## **Project Overview**
 
-#### Before any analysis it is important to understand your data and have a good overview of what each column represents so as to have a smooth landing. It is also good practise to import all the necessary libraries required for any data analysis assignment. Armed with a description file for all the column names, it was a little bit easier to manoevre through the whole project. 
+This project explores a comprehensive **regression analysis** of the King County housing market using machine learning algorithms. Our main goal was to predict housing prices by analyzing various features of the properties, such as size, location, and year of construction, among others. Leveraging tools like **StatsModels** and **Scikit-Learn**, we applied multiple regression models, with a focus on improving accuracy and minimizing error metrics like RMSE.
 
-#### <ins> Data Cleaning </ins>
-#### Conducting a proper data cleaning is the first step before data analysis. This ensures no wrong insights are extracted from unclean data. Unclean data in most may lead to wrong conclusions. Data cleaning involves either imputing/dropping missing values as well as ensuring the columns are in their correct formart especially datetime columns which were really necessary in engineering new features. It also involves creating new categories for missing data in the categorical variables rather than filling them with te mode or median values. This generally depends on the task at hand and before dropping off any data, we esnured we checked it's missing values percentage. 
+As a team, we set out to achieve the following objectives:
+1. **Build a regression model** with high accuracy and low RMSE (Root Mean Square Error), which would serve as our evaluation metric for model selection.
+2. **Extract insights** from the data, identifying key factors that influence housing prices both positively and negatively.
+3. **Understand the impact of independent features** (predictors) on the house prices to provide meaningful insights into the market dynamics.
 
-#### <ins> Data Analysis </ins>
-#### This stage involves creating visualizations with the aim of examining the patterns in data, whether they follow common trends or whether they are scattered or not. The visualization libraries such as Matplotlib and Seaborn were very crucial in this phase. We checked for the distributiion in every ppredictors in relation to the target variable.Most of the data seemed to have wide ranges such as the house price which had the lowest price at 78,000 and a maximum of baout 7,000,000. But such is the nature of Real Estate where very many factors are involved in determing the prices of houses. This stage involved plotting Histograms, scatter plots, distribution plots as well as line plots. This was necessary in ensuring the data being dealt with assumes the Linear regression assumption of normality. Suppose the data doesn't meet the normality assumption, it is always necessary to log transform the data or even scale the data. Log transformations shouls be however done with  caution as this alters the correlations which may have an impact on the model's accuracy score as well as RMSE scores. 
+---
 
-#### <ins> Feature Engineering </ins>
-#### This has to be the most important step on any data being prepared for the modelling process. With housing data, domain knowledge tells us that house sales always have a season and there are certain times of the year when house prices boom and there are also other seasons where sales drop significantly. Most house sales and prices are therefore faced with the concept of seasonality. Domain knowledge also dictates the age of any house determines the price at which it will be sold. Mapping and encoding of categorcal variables is also always necessary in this phase because the model works with numeric features and these features are very important in helping us find a good correlation with the price. The new features play an important role in ensuring a good model score.
+## **Business Objectives**
 
-#### <ins> Data Modelling </ins>
-#### Here data is now very ready for the modelling process. It is good practise to split your dta into training and test sets so as to get a good measure of ho the model may perform on unseen data. We used four models naely StatsModels, Scikit-Learn, RandomForest Regressor, XGBoost and LightGBM. Both XGBoost and LightGBM are gradient boosting algorithms and as such they have great speeds in getting the scores on testing data and predicted values. They also have good accuracies with options for tuning to even push the accuracy scores higher. The mian disadvantage with them is that they may easily overfit the data and give  aflase sense of a good model. However, with the help of cross validation, overfitting is greatly minimized as it takes care of the random state of numbers. We also used the ration 8:2 in the splitting of train and test sets. 
-#### XGBoost algorithm was the best with an accuracy score of about 86.5 and a normalized RMSE of about 0.0172.
+We defined the following business objectives for the project:
 
-#### <ins> Objectives </ins>
-#### To answer our objectives, we used the Partial Dependency Plots so as to have a better understanding of how the model works. These plots give more clear insights than the feature importance plots that come embedded with the gradient boosting models. All our objectives were answered by these plots and even more insights were extractred from these plots. 
+- **Predict Housing Prices:** Develop a model capable of accurately predicting house prices based on various features.
+- **Identify Key Features:** Uncover the most influential factors that impact housing prices in King County, such as location, house size, and market trends.
+- **Enhance Understanding of Market Dynamics:** By analyzing the relationships between features and housing prices, we aim to provide insights that could be useful for real estate investors, developers, and buyers.
 
-#### <ins> Challenges </ins>
-#### Some columns which were very importantt had missing values and would have really helped in developing good models. 
-#### Most of the data was also skewed and as such conflicted on whether to log transform some or use it as it is.
+---
 
-#### There was alot of learning of the Real Estate Domain from the insights generated. We learned alot from each other especially when we were feature engineering new features. 
+## **Data Source and Description**
 
+The project is based on **King County housing data**, which contains a variety of features related to house sales. The dataset includes:
+- **Sale prices** (target variable)
+- **House attributes** like number of bedrooms, bathrooms, living area size, lot size, etc.
+- **Geographical information** such as location (latitude, longitude) and zip codes.
+- **Date of sale**, providing potential for feature engineering around seasonal trends.
+
+We used a provided **data dictionary** to understand the meaning of each feature, ensuring we appropriately interpreted the data during analysis and modeling.
+
+---
+
+## **Project Workflow**
+
+### **1. Data Cleaning**
+Before diving into analysis, we performed a thorough **data cleaning** process to ensure the quality and integrity of the dataset:
+- **Handled missing values** by either imputing or dropping them, depending on the significance of the feature.
+- Ensured **categorical variables** with missing values were addressed by creating new categories rather than using common methods like mode or median imputation.
+- Verified **date columns** and ensured they were in the correct format to facilitate feature engineering.
+- Checked for **outliers** and decided on appropriate strategies for dealing with skewed data.
+
+### **2. Data Analysis and Visualization**
+With a clean dataset, we conducted an exploratory data analysis (EDA) to uncover patterns and relationships between the predictors and the target variable:
+- **Histograms, scatter plots, and distribution plots** were used to visualize the distribution of features and identify trends.
+- **Price distribution** was found to range from \$78,000 to over \$7,000,000, reflecting the wide variance in property values across King County.
+- **Correlations between features** were checked to ensure that highly correlated predictors could be properly managed to avoid multicollinearity.
+
+### **3. Feature Engineering**
+One of the most critical aspects of this project was **feature engineering**:
+- Created new features based on **domain knowledge**, such as seasonality in house prices. We noted that house prices often fluctuate depending on the time of year, with certain periods exhibiting higher sales activity.
+- Engineered features like **house age** and **distance to important amenities**.
+- Mapped and encoded categorical variables to numerical representations to ensure compatibility with machine learning models.
+
+### **4. Model Building**
+We developed several models to predict house prices, ensuring each model was fine-tuned for accuracy:
+- Models included **StatsModels OLS Regression**, **Scikit-Learn Linear Regression**, **RandomForest Regressor**, **XGBoost**, and **LightGBM**.
+- Our best-performing model was the **XGBoost algorithm**, with an **accuracy score of 86.5%** and a **normalized RMSE of 0.0172**. XGBoost performed well due to its ability to handle complex relationships and its efficient performance in gradient boosting.
+- We used **cross-validation** to ensure that our models did not overfit the data and generalize well to unseen data.
+
+### **5. Model Evaluation**
+To evaluate the models:
+- We used the **RMSE** as a measure of how well the model’s predictions aligned with the actual values.
+- **Accuracy scores** were calculated, and we compared different models using metrics like R-squared.
+- **Partial Dependency Plots (PDPs)** were employed to better understand the influence of individual features on the predictions.
+
+---
+
+## **Key Insights and Results**
+
+- **Feature Importance:** Through Partial Dependency Plots (PDPs), we found that factors such as **square footage**, **location**, and **age of the house** significantly impacted house prices.
+- **Seasonality:** As expected, house prices showed a seasonal trend, with higher sales and prices in specific periods of the year.
+- **Geographical Influence:** Properties located in certain neighborhoods or zip codes demonstrated a higher average price, underlining the importance of location in real estate.
+
+---
+
+## **Challenges**
+
+1. **Missing Data:** Key features like certain property attributes had missing values. This required careful handling to avoid negatively impacting the model.
+2. **Skewed Data:** Many features were skewed, leading to challenges in deciding whether to log-transform or standardize the data.
+3. **Domain Learning:** As a group, we had to familiarize ourselves with **real estate concepts**, especially for feature engineering. This was a valuable learning experience as it improved our understanding of the domain.
+
+---
